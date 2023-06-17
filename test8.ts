@@ -20,36 +20,38 @@
 }
 ```
 */
-interface IData{
-	group:number;
-	name:string;
+interface IData {
+  group: number;
+  name: string;
 }
 
 const students: IData[] = [
-	{group:1, name:"a"},
-	{group:2, name:"b"},
-	{group:1, name:"c"},
-	{group:3, name:"cdsd"},
-]
-interface IGroup<T>{
-	[key:string]:T[];
+  { group: 1, name: "a" },
+  { group: 2, name: "b" },
+  { group: 1, name: "c" },
+  { group: 3, name: "cdsd" },
+];
+interface IGroup<T> {
+  [key: string]: T[];
 }
 
-type key = string|symbol|number;
+type key = string | symbol | number;
 
-function group <T extends Record<key, any>>(students:T[], key:keyof T):IGroup<T>{
-return students.reduce<IGroup<T>>((map:IGroup<T>,item )=>{
-	const itemKey = item[key];
-	let curEl = map[itemKey];
-	if(Array.isArray(curEl)){
-		curEl.push( item);
-	}
-	else{
-		curEl=[item];
-	}
-	map[itemKey]=curEl;
-	return map;
-},{});
+function group<T extends Record<key, any>>(
+  students: T[],
+  key: keyof T
+): IGroup<T> {
+  return students.reduce<IGroup<T>>((map: IGroup<T>, item) => {
+    const itemKey = item[key];
+    let curEl = map[itemKey];
+    if (Array.isArray(curEl)) {
+      curEl.push(item);
+    } else {
+      curEl = [item];
+    }
+    map[itemKey] = curEl;
+    return map;
+  }, {});
 }
 
 const res1 = group<IData>(students, "group");

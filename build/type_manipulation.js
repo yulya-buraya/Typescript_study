@@ -5,7 +5,7 @@ function getValue(obj, key) {
 }
 const user = {
     name: "Sacha",
-    age: 18
+    age: 18,
 };
 const username = getValue(user, "name");
 //typeof с его помощью можно переиспользовать типы
@@ -20,7 +20,7 @@ else {
 let str2OrNum = typeof strOrNum;
 //keyof + typeof
 const teacher = {
-    name: "Mariya"
+    name: "Mariya",
 };
 var Direction;
 (function (Direction) {
@@ -31,29 +31,29 @@ const userT = {
     name: "dskdsd",
     roles: [],
     permission: {
-        endDate: new Date()
-    }
+        endDate: new Date(),
+    },
 };
 const nameUser = user["name"];
-const rolesName = 'roles'; //string литеральнвй тип(со строкой не будет работать )
+const rolesName = "roles"; //string литеральнвй тип(со строкой не будет работать )
 let roles2 = "roles"; //string литеральнвй тип
-const roles = ["admin", 'user', 'super-user'];
+const roles = ["admin", "user", "super-user"];
 const ok = {
     code: 200,
     data: "done",
-    additionalData: "Good Response"
+    additionalData: "Good Response",
 };
 const err = {
     code: 401,
     data: new Error(),
-    additionalData: 401
+    additionalData: 401,
 };
 class Bird {
 }
 class ProtectedBird extends Bird {
 }
 function getBird(dbIdorID) {
-    if (typeof dbIdorID === 'number') {
+    if (typeof dbIdorID === "number") {
         return new Bird();
     }
     else {
@@ -61,7 +61,7 @@ function getBird(dbIdorID) {
     }
 }
 function getBird2(id) {
-    if (typeof id === 'number') {
+    if (typeof id === "number") {
         return new Bird();
     }
     else {
@@ -69,14 +69,14 @@ function getBird2(id) {
     }
 }
 const bird1 = getBird2(1);
-//infer 
+//infer
 function runTransaction(transaction) {
     console.log(transaction);
 }
 const transaction = {
-    fromTo: ["1", '2']
+    fromTo: ["1", "2"],
 };
 runTransaction(transaction);
 const a = {
-    result: "httpError"
+    result: "httpError",
 };

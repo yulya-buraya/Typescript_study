@@ -3,11 +3,11 @@
 //объектов, которые имеют id по убыванию и по возрастанию
 //js
 const data = [
-    { id: 2, name: 'Петя' },
-    { id: 1, name: 'Вася' },
-    { id: 3, name: 'Надя' },
+    { id: 2, name: "Петя" },
+    { id: 1, name: "Вася" },
+    { id: 3, name: "Надя" },
 ];
-function sortById(data, type = 'asc') {
+function sortById(data, type = "asc") {
     return data.sort((a, b) => {
         if (type == "asc") {
             return a.id - b.id;

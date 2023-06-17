@@ -1,6 +1,4 @@
 "use strict";
-//Декоратор
-// паттерн  декоратора
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -22,6 +20,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+Object.defineProperty(exports, "__esModule", { value: true });
+//Декоратор
+// паттерн  декоратора
+require("reflect-metadata");
+const POSITIVE_METADATA_KEY = Symbol("POSITIVE_METADATA_KEY");
 //@setUserAdvenced(66)
 //@nullUser
 //@nullUserAdvenced
@@ -51,6 +54,7 @@ __decorate([
     __metadata("design:returntype", Number)
 ], UserService.prototype, "getUsersInDatabase", null);
 __decorate([
+    Validate(),
     __param(0, Positive()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
@@ -98,8 +102,8 @@ function AddDate(date) {
         };
     };
 }
-console.log((new UserService).createdAt);
-//декортор методов 
+console.log(new UserService().createdAt);
+//декортор методов
 function Log() {
     return (target, propertyKey, descriptor) => {
         console.log(target);
@@ -110,7 +114,7 @@ function Log() {
         };
     };
 }
-//декортор методов 
+//декортор методов
 function Catch({ rethrow } = { rethrow: false }) {
     return (target, _, descriptor) => {
         const oldMethod = descriptor.value;
@@ -129,7 +133,7 @@ function Catch({ rethrow } = { rethrow: false }) {
         });
     };
 }
-//декоратор свойств 
+//декоратор свойств
 function Max(max) {
     return (target, propertyKey) => {
         let value;
@@ -146,7 +150,7 @@ function Max(max) {
         };
         Object.defineProperty(target, propertyKey, {
             get: getter,
-            set: setter
+            set: setter,
         });
     };
 }
@@ -160,14 +164,35 @@ function LogSetter() {
         };
     };
 }
-//декоратор параметра метода 
+//декоратор параметра метода
+//metadata
 function Positive() {
     return (target, propertyKey, parameterIndex) => {
-        console.log(target);
-        console.log(propertyKey);
-        console.log(parameterIndex);
+        console.log(Reflect.getOwnMetadata("design:type", target, propertyKey));
+        console.log(Reflect.getOwnMetadata("design:returnType", target, propertyKey));
+        console.log(Reflect.getOwnMetadata("design:paramtypes", target, propertyKey));
+        let existParams = Reflect.getOwnMetadata(POSITIVE_METADATA_KEY, target, propertyKey) || [];
+        existParams.push(parameterIndex);
+        Reflect.defineMetadata(POSITIVE_METADATA_KEY, existParams, target, propertyKey);
+    };
+}
+function Validate() {
+    return (target, propertyKey, descriptor) => {
+        let method = descriptor.value;
+        descriptor.value = function (...args) {
+            let positiveParams = Reflect.getOwnMetadata(POSITIVE_METADATA_KEY, target, propertyKey) || [];
+            if (positiveParams) {
+                for (let index of positiveParams) {
+                    if (args[index] < 0) {
+                        throw new Error("Число должно быть больше нуля");
+                    }
+                }
+            }
+            return method === null || method === void 0 ? void 0 : method.apply(this, args);
+        };
     };
 }
 const userService = new UserService();
 userService.city = "Batumy";
-console.log(userService.city);
+console.log(userService.setUsersInDatabase(10));
+console.log(userService.setUsersInDatabase(-1));

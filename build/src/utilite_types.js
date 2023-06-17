@@ -1,8 +1,8 @@
 "use strict";
-//partial - делает все свойства необязательными 
+//partial - делает все свойства необязательными
 //Requured - делает все свойства обязательными
 //Readonly- делает все свойства доступные только для чтеня.
-// Эти дженерики можно комбинировать 
+// Эти дженерики можно комбинировать
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -15,7 +15,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 const p = {};
 //ReturnType - позволяет получить тип, который возврщает функция
 //Parameters - позволяет вытащить параметры функции
-//ConstructorParameters - позыоляет получить параметры конструктора 
+//ConstructorParameters - позыоляет получить параметры конструктора
 //если в returnType мы пеедаем тип с дженериком, то будет unknown
 class Developer {
     constructor(id, name) {

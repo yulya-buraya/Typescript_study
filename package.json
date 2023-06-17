@@ -1,0 +1,22 @@
+{
+  "name": "5-typescript-demo-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yulya-buraya/Typescript_study.git"
+  },
+  "author": "Yuliya Buraya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yulya-buraya/Typescript_study/issues"
+  },
+  "homepage": "https://github.com/yulya-buraya/Typescript_study#readme",
+  "dependencies": {
+    "reflect-metadata": "^0.1.13"
+  }
+}

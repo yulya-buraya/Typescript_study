@@ -14,9 +14,9 @@ class LoggerWithDate extends Logger1 {
         console.log(message);
     }
     logWithDate(message) {
-        this.printDate(new Date);
+        this.printDate(new Date());
         this.log(message);
     }
 }
 const logWithDate = new LoggerWithDate();
-logWithDate.logWithDate('gfgfgfgf');
+logWithDate.logWithDate("gfgfgfgf");

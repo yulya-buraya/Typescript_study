@@ -44,7 +44,9 @@ class Cart {
         this.products = this.products.filter((p) => p.id !== productId);
     }
     calculatePrice() {
-        return this.products.map((p) => p.price).reduce((p1, p2) => p1 + p2);
+        return this.products
+            .map((p) => p.price)
+            .reduce((p1, p2) => p1 + p2);
     }
     setDelivery(delivery) {
         this.delivery = delivery;
