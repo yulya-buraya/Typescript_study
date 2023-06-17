@@ -231,5 +231,4 @@ class MyClass {
 
   @Uni("Метод static")
   static method(@Uni("Параметр методов") s: string) {}
-
 }
