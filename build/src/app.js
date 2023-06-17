@@ -566,7 +566,7 @@ new User1().addSkill("TypeScript"); */
 //   }
 // }
 // //extends
-// type newPaymentType="new"| "paid";
+// type newPaymentType="new"| "paid"; 
 // class newPayment{
 //   id:number;
 //   status:newPaymentType = "new";
@@ -600,7 +600,7 @@ new User1().addSkill("TypeScript"); */
 // name:string ="Pet";
 // constructor(){
 //   console.log(this.name);
-// }
+// }  
 // }
 // class Friend extends Dog{
 //   name:string ="Petty";
@@ -617,7 +617,7 @@ new User1().addSkill("TypeScript"); */
 //     this.code=code??500;
 //   }
 // }
-// //Композиция и наследование
+// //Композиция и наследование 
 // class Student{
 //   name:string;
 //   constructor(name:string){
@@ -647,7 +647,7 @@ new User1().addSkill("TypeScript"); */
 // class Lab{
 //   date:Date;
 // }
-// //неправмильно (жесткие границы ухудчают)
+// //неправмильно (жесткие границы ухудчают) 
 // class StudentWithLab extends Lab{
 // name:string;
 // }
@@ -660,7 +660,7 @@ new User1().addSkill("TypeScript"); */
 // this.student=student;
 // }
 // }
-// //видимость свойств
+// //видимость свойств 
 // class Vehicle{
 //   public make:string;
 //   private damages:string[];
@@ -809,7 +809,7 @@ undefined*/
 //   case 'object':
 //     return JSON.stringify(data);
 //   default:
-//     return undefined;
+//     return undefined; 
 // }
 // }
 const split = getSplitHalf;
@@ -817,8 +817,8 @@ const split2 = getSplitHalf;
 const logLine = {
     timeStamp: new Date(),
     data: {
-        a: 1,
-    },
+        a: 1
+    }
 };
 class Vehicle {
 }

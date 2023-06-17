@@ -1,2 +1,3 @@
-import {A} from './namespace' 
-console.log(A.a);
+import {a} from './namespace.js'
+
+console.log(a);

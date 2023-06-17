@@ -646,14 +646,14 @@ new User1().addSkill("TypeScript"); */
 // }
 // class Payable implements IPayable, IDeletable{
 //   delete(): void {
-
+    
 //   }
 //   pay(paymentID: number| string): void {
 //   }
 
 // }
 // //extends
-// type newPaymentType="new"| "paid";
+// type newPaymentType="new"| "paid"; 
 
 // class newPayment{
 //   id:number;
@@ -693,7 +693,7 @@ new User1().addSkill("TypeScript"); */
 // name:string ="Pet";
 // constructor(){
 //   console.log(this.name);
-// }
+// }  
 // }
 
 // class Friend extends Dog{
@@ -713,7 +713,7 @@ new User1().addSkill("TypeScript"); */
 //     this.code=code??500;
 //   }
 // }
-// //Композиция и наследование
+// //Композиция и наследование 
 // class Student{
 //   name:string;
 //   constructor(name:string){
@@ -749,7 +749,7 @@ new User1().addSkill("TypeScript"); */
 // class Lab{
 //   date:Date;
 // }
-// //неправмильно (жесткие границы ухудчают)
+// //неправмильно (жесткие границы ухудчают) 
 // class StudentWithLab extends Lab{
 // name:string;
 // }
@@ -763,7 +763,7 @@ new User1().addSkill("TypeScript"); */
 // }
 // }
 
-// //видимость свойств
+// //видимость свойств 
 // class Vehicle{
 //   public make:string;
 //   private damages:string[];
@@ -785,6 +785,7 @@ new User1().addSkill("TypeScript"); */
 //     this.damages.push(damage);
 //   }
 // }
+
 
 // class EuroTruck extends Vehicle{
 //   setRun(km:number){
@@ -912,10 +913,10 @@ new User1().addSkill("TypeScript"); */
 
 // const res = LogMiddleware<string>('10');
 
-function getSplitHalf<T>(data: Array<T>): Array<T> {
-  const l = data.length / 2;
-  return data.splice(0, l);
-}
+ function getSplitHalf<T>(data:Array<T>):Array<T>{
+   const l= data.length / 2;
+   return data.splice(0, l);
+ }
 
 // getSplitHalf([1,2,5,6]);
 
@@ -938,47 +939,47 @@ undefined*/
 //   case 'object':
 //     return JSON.stringify(data);
 //   default:
-//     return undefined;
+//     return undefined; 
 // }
 // }
 
-const split: <T>(data: Array<T>) => Array<T> = getSplitHalf;
-const split2: <Y>(data: Array<Y>) => Array<Y> = getSplitHalf;
+const split:<T>(data:Array<T>)=>Array<T> =getSplitHalf;
+const split2:<Y>(data:Array<Y>)=>Array<Y> =getSplitHalf;
 
-interface ILogLine<T> {
-  timeStamp: Date;
-  data: T;
+interface ILogLine<T>{
+  timeStamp:Date;
+  data:T
 }
 
-type LogLineType<T> = {
-  timeStamp: Date;
-  data: T;
-};
-
-const logLine: ILogLine<{ a: number }> = {
-  timeStamp: new Date(),
-  data: {
-    a: 1,
-  },
-};
-class Vehicle {
-  run: number;
+type LogLineType<T>= {
+  timeStamp:Date;
+  data:T
 }
 
-function kmtoMiles<T extends Vehicle>(vehicle: T): T {
-  vehicle.run = vehicle.run / 0.62;
+const logLine: ILogLine<{a:number}>={
+  timeStamp:new Date(),
+  data:{
+    a:1
+  }
+ }
+ class Vehicle{
+  run:number;
+ }
+
+ function kmtoMiles<T extends Vehicle>(vehicle:T):T{
+  vehicle.run = vehicle.run/0.62;
   return vehicle;
+ }
+
+class LCV extends Vehicle{
+  capacity: number
 }
 
-class LCV extends Vehicle {
-  capacity: number;
-}
+const vehicle= kmtoMiles(new Vehicle());
+const lcv= kmtoMiles(new LCV());
+kmtoMiles({run:1});
 
-const vehicle = kmtoMiles(new Vehicle());
-const lcv = kmtoMiles(new LCV());
-kmtoMiles({ run: 1 });
-
-function logId<T extends string | number, Y>(id: T, data: Y): T {
+function logId<T extends string| number, Y> (id:T, data: Y):T{
   console.log(id);
   console.log(data);
   return id;
