@@ -180,7 +180,8 @@ function Validate() {
     return (target, propertyKey, descriptor) => {
         let method = descriptor.value;
         descriptor.value = function (...args) {
-            let positiveParams = Reflect.getOwnMetadata(POSITIVE_METADATA_KEY, target, propertyKey) || [];
+            let positiveParams = Reflect.getOwnMetadata(POSITIVE_METADATA_KEY, target, propertyKey) ||
+                [];
             if (positiveParams) {
                 for (let index of positiveParams) {
                     if (args[index] < 0) {
@@ -195,4 +196,43 @@ function Validate() {
 const userService = new UserService();
 userService.city = "Batumy";
 console.log(userService.setUsersInDatabase(10));
-console.log(userService.setUsersInDatabase(-1));
+//console.log(userService.setUsersInDatabase(-1));
+//порядок декораторов
+function Uni(name) {
+    console.log(`Инициализация ${name}`);
+    return function () {
+        console.log(`Вызов: ${name}`);
+    };
+}
+let MyClass = class MyClass {
+    method(s) { }
+    constructor(s) { }
+    static method(s) { }
+};
+__decorate([
+    Uni("Свойство"),
+    __metadata("design:type", String)
+], MyClass.prototype, "props", void 0);
+__decorate([
+    Uni("Метод"),
+    __param(0, Uni("Параметр методов")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], MyClass.prototype, "method", null);
+__decorate([
+    Uni("Статическое свойство"),
+    __metadata("design:type", String)
+], MyClass, "prop2", void 0);
+__decorate([
+    Uni("Метод static"),
+    __param(0, Uni("Параметр методов")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], MyClass, "method", null);
+MyClass = __decorate([
+    Uni("Класс"),
+    __param(0, Uni("Параметр constructor")),
+    __metadata("design:paramtypes", [String])
+], MyClass);
