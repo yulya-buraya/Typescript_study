@@ -28,5 +28,4 @@ class Service2 {
     }
 }
 new Service1().addMap(1, 'Working');
-new Service1().addMap(2, 'Working +1');
 new Service2().getKeys(1);
