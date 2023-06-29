@@ -24,4 +24,4 @@ class PersistentDBAdapter extends KVDatabase {
 function run(base) {
     base.save("zero", "vialon");
 }
-run(new PersistentDBAdapter(new PersistentDB));
+run(new PersistentDBAdapter(new PersistentDB()));
